@@ -1,23 +1,32 @@
-﻿#include <iostream>
+﻿// Функция быстрого возведения числа в степень - бинарная
+
+#include <iostream>
 using namespace std;
 
 double my_pow(double number, unsigned int stepen) {
     double result = 1;
-     for (int i = 0; i < stepen; i++) {
-            result = result * number;
+    while (stepen) {
+        if (stepen % 2 == 0) {
+            stepen /= 2;
+            number *= number;
         }
-        cout << "result = " << result;
-        return result;
+        else {
+            stepen--;
+            result *= number;
+        }
+    }
+    cout << result;
+    return result;
 }
 
 int main()
 {
     double number;
     unsigned int stepen;
-    cout << "Enter number";
+    cout << "number\n";
     cin >> number;
-    cout << "Enter stepen";
+    cout << "stepen\n";
     cin >> stepen;
-
     my_pow(number, stepen);
+    return 0;
 }
